@@ -141,7 +141,7 @@ See [baseline command on flyway's documentation](https://flywaydb.org/documentat
 
 See [migrate command on flyway's documentation](https://flywaydb.org/documentation/commandline/migrate)
 
-#### migrate
+#### repair
 
 See [repair command on flyway's documentation](https://flywaydb.org/documentation/commandline/repair)
 
