@@ -25,7 +25,7 @@ module.exports = function(grunt) {
         var done = this.async();
 
         // Path to the Flyway Command Line 'bin' directory
-        var flywayBinPath = Path.resolve(__dirname, '../flyway-3.2.1/lib');
+        var flywayBinPath = Path.resolve(__dirname, '../flyway-4.1.2/lib');
 
         // Windows CLASSPATH separator
         var classPathSeparator = ';';
@@ -38,8 +38,8 @@ module.exports = function(grunt) {
         }
 
         // Creates the Java CLASSPATH used to run Flyway
-        var javaClasspath = flywayBinPath + '/flyway-commandline-3.2.1.jar' + classPathSeparator;
-        javaClasspath = javaClasspath + flywayBinPath + '/flyway-core-3.2.1.jar';
+        var javaClasspath = flywayBinPath + '/flyway-commandline-4.1.2.jar' + classPathSeparator;
+        javaClasspath = javaClasspath + flywayBinPath + '/flyway-core-4.1.2.jar';
 
         // Object used to configure the Flyway Commands which are available with the Grunt Flyway Plugin
         // Currently available commands are :
@@ -59,7 +59,9 @@ module.exports = function(grunt) {
                 password: {},
                 schemas: {},
                 jarDirs: {},
-                callbacks: {}
+                callbacks: {},
+                skipDefaultCallbacks: {},
+                cleanDisabled: {}
             },
             baseline: {
                 url: {
@@ -72,6 +74,7 @@ module.exports = function(grunt) {
                 table: {},
                 jarDirs: {},
                 callbacks: {},
+                skipDefaultCallbacks: {},
                 baselineVersion: {},
                 baselineDescription: {}
             },
@@ -87,23 +90,32 @@ module.exports = function(grunt) {
                 locations: {},
                 jarDirs: {},
                 sqlMigrationPrefix: {},
+                repeatableSqlMigrationPrefix: {},
                 sqlMigrationSeparator: {},
                 sqlMigrationSuffix: {},
+                allowMixedMigrations: {},
                 encoding: {},
+                placeholderReplacement: {},
                 placeholders: {
                     isObject: true
                 },
                 placeholderPrefix: {},
                 placeholderSuffix: {},
                 resolvers: {},
+                skipDefaultResolvers: {},
                 callbacks: {},
+                skipDefaultCallbacks: {},
                 target: {},
                 outOfOrder: {},
                 validateOnMigrate: {},
                 cleanOnValidationError: {},
+                ignoreMissingMigrations: {},
+                ignoreFutureMigrations: {},
+                cleanDisabled: {},
                 baselineOnMigrate: {},
                 baselineVersion: {},
-                baselineDescription: {}
+                baselineDescription: {},
+                installedBy: {}
             },
             repair: {
                 url: {
@@ -117,6 +129,7 @@ module.exports = function(grunt) {
                 locations: {},
                 jarDirs: {},
                 sqlMigrationPrefix: {},
+                repeatableSqlMigrationPrefix: {},
                 sqlMigrationSeparator: {},
                 sqlMigrationSuffix: {},
                 encoding: {},
@@ -127,7 +140,9 @@ module.exports = function(grunt) {
                 placeholderPrefix: {},
                 placeholderSuffix: {},
                 resolvers: {},
-                callbacks: {}
+                skipDefaultResolvers: {},
+                callbacks: {},
+                skipDefaultCallbacks: {}
             },
             validate: {
                 url: {
@@ -141,6 +156,7 @@ module.exports = function(grunt) {
                 locations: {},
                 jarDirs: {},
                 sqlMigrationPrefix: {},
+                repeatableSqlMigrationPrefix: {},
                 sqlMigrationSeparator: {},
                 sqlMigrationSuffix: {},
                 encoding: {},
@@ -151,10 +167,14 @@ module.exports = function(grunt) {
                 placeholderPrefix: {},
                 placeholderSuffix: {},
                 resolvers: {},
+                skipDefaultResolvers: {},
                 callbacks: {},
+                skipDefaultCallbacks: {},
                 target: {},
                 outOfOrder: {},
-                cleanOnValidationError: {}
+                cleanOnValidationError: {},
+                ignoreMissingMigrations: {},
+                ignoreFutureMigrations: {}
             },
             info: {
                 url: {
@@ -168,6 +188,7 @@ module.exports = function(grunt) {
                 locations: {},
                 jarDirs: {},
                 sqlMigrationPrefix: {},
+                repeatableSqlMigrationPrefix: {},
                 sqlMigrationSeparator: {},
                 sqlMigrationSuffix: {},
                 encoding: {},
@@ -178,7 +199,9 @@ module.exports = function(grunt) {
                 placeholderPrefix: {},
                 placeholderSuffix: {},
                 resolvers: {},
+                skipDefaultResolvers: {},
                 callbacks: {},
+                skipDefaultCallbacks: {},
                 target: {},
                 outOfOrder: {}
             }
