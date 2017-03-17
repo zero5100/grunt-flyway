@@ -294,40 +294,11 @@ module.exports = function(grunt) {
 
         }
 
-        grunt.log.write(flywayCommand);
-
         var childProcess = ChildProcess.exec(flywayCommand, function(error, stdout, stderr) {
 
             grunt.log.writeln();
-            grunt.log.writeln(error);
             grunt.log.writeln(stdout);
             grunt.log.writeln(stderr);
-
-            if(stdout.indexOf('ERROR: FlywayException: Unable to obtain Jdbc connection from DataSource') !== -1) {
-
-                var databaseName = options.url.substring(options.url.lastIndexOf('/') + 1);
-
-                grunt.log.writeln('The connection to your database has failed, is your connection configuration set properly?');
-                grunt.log.writeln();
-                grunt.log.writeln('Here are the parameters your are using to connect to your database:');
-                grunt.log.writeln('  url=' + options.url);
-                grunt.log.writeln('  user=' + options.user);
-                grunt.log.writeln('  password=' + options.password);
-
-                grunt.log.writeln();
-                grunt.log.writeln('If your database connection configuration parameters are valid verify that your database exist.');
-                grunt.log.writeln('To create your database you could use the following SQL script:');
-                grunt.log.writeln();
-                grunt.log.writeln('  -- Creates the database');
-                grunt.log.writeln('  create database ' + databaseName + ' default char set UTF8;');
-                grunt.log.writeln('  use ' + databaseName + ';');
-                grunt.log.writeln();
-                grunt.log.writeln('  -- Creates the user used to connect to the database with the right grants');
-                grunt.log.writeln('  grant all privileges on ' + databaseName + '.* to \'' + options.user + '\'@\'localhost\' identified by \'' + options.password + '\';');
-                grunt.log.writeln('  flush privileges;');
-                grunt.log.writeln();
-
-            }
 
         });
 
